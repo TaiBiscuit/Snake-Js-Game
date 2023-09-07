@@ -26,6 +26,11 @@ let snake = [
     {x: matrixSize * 1, y:0},
 ]
 
+
+const gameStartSound = new Audio('./audio/game-start.mp3');
+const eatSound = new Audio('./audio/eat.mp3.wav');
+const gameOverSound = new Audio('./audio/game-end.mp3');
+
 //Events
 
 window.addEventListener('keydown', changeDirection);
@@ -42,6 +47,7 @@ resetBtn.addEventListener('click', resetGame);
 
 function gameStart(){
     run = true;
+    gameStartSound.play();
     scoreText.textContent = score;
     createFood();
     drawFood();
@@ -89,6 +95,7 @@ function moveSnake(){
     const snakeHead = {x: snake[0].x + xVel, y: snake[0].y + yVel};
     snake.unshift(snakeHead);
     if(snake[0].x == foodX && snake[0].y == foodY){
+        eatSound.play()
         score++;
         gameSpeed -= 1;
         console.log(gameSpeed)
@@ -173,6 +180,7 @@ function checkGameOver(){
 };
 
 function gameOver(){
+    gameOverSound.play();
     scoreText.innerHTML = 'GAME OVER!';
     yourScore.innerText = score;
     scoreZone.appendChild(yourScore);
