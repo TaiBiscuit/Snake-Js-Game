@@ -15,6 +15,10 @@ body{
     margin: 1rem auto 0 auto;
     text-align: center;
     font-family: 'Bricolage Grotesque', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
 }
 
 .game-board{
